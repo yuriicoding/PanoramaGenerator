@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<title>CMPT 361 HW2 - Enter your name and surname</title>
+
+</head> <body>
+
+<h2>CMPT 361 - Homework 2</h2>
+
+<p>Name: <b>Yurii Huba</b></p>
+<p>Student No: <b>301540732</b></p>
+<p>Date: 2024-02-12</p>
+
+<h4>Honor statement:</h4>
+<p>I have not cheated in any way when doing this assignment, I did it on my own. I may have asked questions about the assignment on Coursys, I know that’s totally fine and even encouraged. I also already know that this class is graded on a curve. I realize that if I cheat and by some miracle not get caught, any increase in my grade will in turn shift the curve and result in lower grades for my classmates. Any undeserved extra grade would come at the cost of all others. That’s horrible! I would never do it.</p>
+
+<h4>1: Take four photograph pairs or sets of 4.</h4>
+
+<img src="S1-im1.png" alt="im1" width="300">
+<img src="S1-im2.png" alt="im2" width="300">
+<!--<br><img src="S1-im3.png" alt="im3" width="300">
+<img src="S1-im4.png" alt="im4" width="300">-->
+<br><br>
+<img src="S2-im1.jpg" alt="im1" width="300">
+<img src="S2-im2.jpg" alt="im2" width="300">
+<br><img src="S2-im3.jpg" alt="im3" width="300">
+<img src="S2-im4.jpg" alt="im4" width="300">
+<br><br>
+<img src="S3-im1.jpg" alt="im1" width="300">
+<img src="S3-im2.jpg" alt="im2" width="300">
+<br><img src="S3-im3.jpg" alt="im3" width="300">
+<img src="S3-im4.jpg" alt="im4" width="300">
+<br><br>
+<img src="S4-im1.jpg" alt="im1" width="300">
+<img src="S4-im2.jpg" alt="im2" width="300">
+<br><img src="S4-im3.jpg" alt="im3" width="300">
+<img src="S4-im4.jpg" alt="im4" width="300">
+<br><br>
+
+<h4>2: FAST feature detector</h4>
+<img src="S1-fast.png" alt="S1-fast" width="300">
+<img src="S2-fast.png" alt="S2-fast" width="300">
+
+<h4>2: FASTR feature detector</h4>
+<img src="S1-fastR.png" alt="S1-fastR" width="300">
+<img src="S2-fastR.png" alt="S2-fastR" width="300">
+
+<p>The FASTR function eliminates all of the edges recognized as corners by my FAST function, leaving only strong corners.<br>
+    This can be observed on the wooden structure part of the mountein image (a lot of edges eliminated, but corners are left), and on the 
+    square lights on the celeign of the room image (same thing: corners are left, while edges are eliminated). Elimination
+    of edges plays a great role for image stiching, because unlike corners edges cannot become a reliable points to transform image to stich to another one
+    (observed many times during experiments). The average time of performing my FAST function is 0.624 seconds, and performing FASTR operations usually adds additional 0.045 seconds.
+    The difference in time is caused by the fact that to perform FASTR thresholding we don't need to check pixels around examined one to qualify it, which removes
+    all of the matrix shifting operations performed on the image.
+    
+</p>
+
+
+<h4>3: Point description and matching</h4>
+<img src="S1-fastMatch.png" alt="S1-fastMatch" width="600">
+<br><br>
+<img src="S1-fastRMatch.png" alt="S1-fastRMatch" width="600">
+<br><br>
+<img src="S2-fastMatch.png" alt="S2-fastMatch" width="600">
+<br><br>
+<img src="S2-fastRMatch.png" alt="S2-fastRMatch" width="600">
+
+<p>In my function, for point description and matching, I use the SURF feature description method.<br>
+    The matching of FASTR points matching usually is performed faster than FAST points matching because a significant number of weak corners were eliminated by thresholds in the FASTR function, so in this step, FASTR has fewer corners than FAST.</p>
+
+<h4>4: RANSAC and Panoramas</h4>
+<img src="S1-panorama.png" alt="S1-panorama" width="600">
+<br><br>
+<img src="S2-panorama.png" alt="S2-panorama" width="600">
+<br><br>
+<img src="S3-panorama.png" alt="S3-panorama" width="600">
+<br><br>
+<img src="S4-panorama.png" alt="S4-panorama" width="600">
+
+<p>The optimal parameters of RANSAC for FAST points detected are 80 percent confidence and 30 maximum trials.<br>
+    On the other hand, the optimal parameters for FASTR points detected are 90 percent confidence and 30 maximum trials.<br>
+    The confidence level for FAST points detected had to be lowered because the presence of weak corners made the execution of RANSAC with a 99 confidence level far too long and MATLAB kept indicating that the result cannot satisfy this confidence level.
+    This proves the importance of Harris Cornerness for corner detection methods because it allows for improving the result of image stitching while keeping the program fast.</p>
+
+</body> </html>
